@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Запоминалка</string>
+    <string name="start_training_btn__text">тренажер</string>
+    <string name="start_test_btn__text">тест</string>
+</resources>
