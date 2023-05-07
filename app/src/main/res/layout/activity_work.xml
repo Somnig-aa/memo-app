@@ -6,4 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".WorkActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="вопрос"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+    <Button
+        android:id="@+id/letter_btn1"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:text="буква"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/letter_btn2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        android:padding="20dp"
+        />
+
+    <Button
+        android:id="@+id/letter_btn2"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:text="буква"
+        app:layout_constraintLeft_toRightOf="@id/letter_btn1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        android:padding="20dp"
+        />
+
+    <Button
+        android:id="@+id/home"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="назад"
+        android:textSize="20sp"
+        app:layout_constraintRight_toRightOf="@id/letter_btn1"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
