@@ -1,10 +1,10 @@
 package ru.myitschool.vsu2023.eds.memo_helper;
 
 public class Category {
-    private Integer id;
+    private Long id;
     private String name;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -12,7 +12,7 @@ public class Category {
         return name;
     }
 
-    public Category(Integer id, String name) {
+    public Category(Long id, String name) {
         this.id = id;
         this.name = name;
 

@@ -6,16 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".WorkActivity">
 
+    <TextView
+        android:id="@+id/score_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Cчёт:"
+        android:textSize="30sp"
+        android:layout_margin="20sp"
+        />
 
     <ImageView
+        android:visibility="invisible"
+        android:id="@+id/live1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/baseline_favorite_24"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/live2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/baseline_favorite_24"
+        app:layout_constraintRight_toLeftOf="@+id/live1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/live3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/baseline_favorite_24"
+        app:layout_constraintRight_toLeftOf="@+id/live2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:visibility="invisible"
         android:id="@+id/hint_image_iv"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/question_text_tv"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/live1" />
+
     <TextView
         android:id="@+id/question_text_tv"
         android:layout_width="wrap_content"
@@ -26,32 +67,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.375" />
+        app:layout_constraintVertical_bias="0.475" />
+
     <Button
         android:id="@+id/letter_btn1"
         android:layout_width="168dp"
         android:layout_height="wrap_content"
+        android:padding="20dp"
         android:text="буква"
+        android:textSize="20sp"
+        app:layout_constraintVertical_bias="0.7"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/letter_btn2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textSize="20sp"
-        android:padding="20dp"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/letter_btn2"
         android:layout_width="168dp"
         android:layout_height="wrap_content"
+        android:padding="20dp"
         android:text="буква"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/letter_btn1"
         app:layout_constraintLeft_toRightOf="@id/letter_btn1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textSize="20sp"
-        android:padding="20dp"
-        />
+        app:layout_constraintTop_toTopOf="@+id/letter_btn1" />
 
     <Button
         android:id="@+id/home_btn"
@@ -60,6 +101,6 @@
         android:padding="10dp"
         android:text="@string/home_btn_text"
         android:textSize="20sp"
-        app:layout_constraintRight_toRightOf="@id/letter_btn1"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@id/letter_btn1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

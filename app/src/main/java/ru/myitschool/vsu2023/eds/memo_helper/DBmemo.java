@@ -103,7 +103,7 @@ public class DBmemo {
         return new Question(id, Word, RightLet, WrongLet, ImageName, Category);
     }
 
-    public Category selectCat(int id) {
+    public Category selectCat(long id) {
         Cursor mCursor = mDataBase.query(CATEGORY_TABLE_NAME, null, COLUMN_ID_CAT + " = ?", new String[]{String.valueOf(id)}, null, null, null);
 
         mCursor.moveToFirst();
@@ -120,7 +120,7 @@ public class DBmemo {
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
             do {
-                Integer id = mCursor.getInt(NUM_COLUMN_ID_CAT);
+                Long id = mCursor.getLong(NUM_COLUMN_ID_CAT);
                 String categoryName = mCursor.getString(NUM_COLUMN_CATEGORY);
 
                 arr.add(new Category(id, categoryName));
@@ -129,16 +129,16 @@ public class DBmemo {
         return arr;
     }
 
-    public List<Question> selectQuestOfCat(int categoryId) {
+    public List<Question> selectQuestOfCat(long categoryId) {
         Cursor mCursor = mDataBase.query(QUESTION_TABLE_NAME, null, COLUMN_CATEGORY_QU + " = ?", new String[]{String.valueOf(categoryId)}, null, null, null);
 
         List<Question> arr = new ArrayList<>();
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
             do {
-                Integer id = mCursor.getInt(NUM_COLUMN_ID_QU);
+                Integer id =          mCursor.getInt(NUM_COLUMN_ID_QU);
                 String questWord = mCursor.getString(NUM_COLUMN_WORD);
-                String qustRLet = mCursor.getString(NUM_COLUMN_RIGHT_LETTER);
+                String qustRLet =  mCursor.getString(NUM_COLUMN_RIGHT_LETTER);
                 String questWLet = mCursor.getString(NUM_COLUMN_WRONG_LETTER);
                 String qustImNme = mCursor.getString(NUM_COLUMN_IMAGE_NAME);
                 Integer qustCategId = mCursor.getInt(NUM_COLUMN_CATEGORY_QU);
@@ -171,6 +171,204 @@ public class DBmemo {
                     COLUMN_IMAGE_NAME + " TEXT," +
                     COLUMN_CATEGORY_QU + " INTEGER);";
             db.execSQL(query);
+
+
+
+            ContentValues cv=new ContentValues();
+            cv.put(COLUMN_CATEGORY,"Словарные слова");
+            long c1=db.insert(CATEGORY_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_CATEGORY,"Английский язык");
+            long c2=db.insert(CATEGORY_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_CATEGORY,"Арифметика");
+            long c3=db.insert(CATEGORY_TABLE_NAME,null,cv);
+            cv.clear();
+
+            cv.put(COLUMN_WORD,"к_рова");
+            cv.put(COLUMN_RIGHT_LETTER,"о");
+            cv.put(COLUMN_WRONG_LETTER,"а");
+            cv.put(COLUMN_IMAGE_NAME,"cow");
+            cv.put(COLUMN_CATEGORY_QU,c1);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"мес_ц");
+            cv.put(COLUMN_RIGHT_LETTER,"я");
+            cv.put(COLUMN_WRONG_LETTER,"е");
+            cv.put(COLUMN_IMAGE_NAME,"moon");
+            cv.put(COLUMN_CATEGORY_QU,c1);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"ябл_ко");
+            cv.put(COLUMN_RIGHT_LETTER,"о");
+            cv.put(COLUMN_WRONG_LETTER,"а");
+            cv.put(COLUMN_IMAGE_NAME,"apple");
+            cv.put(COLUMN_CATEGORY_QU,c1);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"в_р_бей");
+            cv.put(COLUMN_RIGHT_LETTER,"о");
+            cv.put(COLUMN_WRONG_LETTER,"а");
+            cv.put(COLUMN_IMAGE_NAME,"bird");
+            cv.put(COLUMN_CATEGORY_QU,c1);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"бар_баны");
+            cv.put(COLUMN_RIGHT_LETTER,"а");
+            cv.put(COLUMN_WRONG_LETTER,"о");
+            cv.put(COLUMN_IMAGE_NAME,"drums");
+            cv.put(COLUMN_CATEGORY_QU,c1);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"л_сица");
+            cv.put(COLUMN_RIGHT_LETTER,"и");
+            cv.put(COLUMN_WRONG_LETTER,"е");
+            cv.put(COLUMN_IMAGE_NAME,"fox");
+            cv.put(COLUMN_CATEGORY_QU,c1);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"кар_ндаш");
+            cv.put(COLUMN_RIGHT_LETTER,"а");
+            cv.put(COLUMN_WRONG_LETTER,"о");
+            cv.put(COLUMN_IMAGE_NAME,"pencil");
+            cv.put(COLUMN_CATEGORY_QU,c1);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"м_роз");
+            cv.put(COLUMN_RIGHT_LETTER,"о");
+            cv.put(COLUMN_WRONG_LETTER,"а");
+            cv.put(COLUMN_IMAGE_NAME,"santa");
+            cv.put(COLUMN_CATEGORY_QU,c1);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"яг_да");
+            cv.put(COLUMN_RIGHT_LETTER,"о");
+            cv.put(COLUMN_WRONG_LETTER,"а");
+            cv.put(COLUMN_IMAGE_NAME,"srawberry");
+            cv.put(COLUMN_CATEGORY_QU,c1);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+
+
+
+            cv.clear();
+            cv.put(COLUMN_WORD,"собака");
+            cv.put(COLUMN_RIGHT_LETTER,"dog");
+            cv.put(COLUMN_WRONG_LETTER,"cat");
+            cv.put(COLUMN_IMAGE_NAME,"dog");
+            cv.put(COLUMN_CATEGORY_QU,c2);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.put(COLUMN_WORD,"кошка");
+            cv.put(COLUMN_RIGHT_LETTER,"cat");
+            cv.put(COLUMN_WRONG_LETTER,"hat");
+            cv.put(COLUMN_IMAGE_NAME,"cat");
+            cv.put(COLUMN_CATEGORY_QU,c2);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"муравей");
+            cv.put(COLUMN_RIGHT_LETTER,"ant");
+            cv.put(COLUMN_WRONG_LETTER,"ent");
+            cv.put(COLUMN_IMAGE_NAME,"ant");
+            cv.put(COLUMN_CATEGORY_QU,c2);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"кровать");
+            cv.put(COLUMN_RIGHT_LETTER,"bed");
+            cv.put(COLUMN_WRONG_LETTER,"bat");
+            cv.put(COLUMN_IMAGE_NAME,"bed");
+            cv.put(COLUMN_CATEGORY_QU,c2);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"мышь");
+            cv.put(COLUMN_RIGHT_LETTER,"mouse");
+            cv.put(COLUMN_WRONG_LETTER,"rice");
+            cv.put(COLUMN_IMAGE_NAME,"mouse");
+            cv.put(COLUMN_CATEGORY_QU,c2);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"лиса");
+            cv.put(COLUMN_RIGHT_LETTER,"fox");
+            cv.put(COLUMN_WRONG_LETTER,"box");
+            cv.put(COLUMN_IMAGE_NAME,"box");
+            cv.put(COLUMN_CATEGORY_QU,c2);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"коробка");
+            cv.put(COLUMN_RIGHT_LETTER,"box");
+            cv.put(COLUMN_WRONG_LETTER,"fox");
+            cv.put(COLUMN_IMAGE_NAME,"box");
+            cv.put(COLUMN_CATEGORY_QU,c2);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"машина");
+            cv.put(COLUMN_RIGHT_LETTER,"car");
+            cv.put(COLUMN_WRONG_LETTER,"cor");
+            cv.put(COLUMN_IMAGE_NAME,"car");
+            cv.put(COLUMN_CATEGORY_QU,c2);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+
+            cv.clear();
+            cv.put(COLUMN_WORD,"4+4");
+            cv.put(COLUMN_RIGHT_LETTER,"8");
+            cv.put(COLUMN_WRONG_LETTER,"6");
+            cv.put(COLUMN_IMAGE_NAME,"a8");
+            cv.put(COLUMN_CATEGORY_QU,c3);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.put(COLUMN_WORD,"7+2");
+            cv.put(COLUMN_RIGHT_LETTER,"9");
+            cv.put(COLUMN_WRONG_LETTER,"10");
+            cv.put(COLUMN_IMAGE_NAME,"a9");
+            cv.put(COLUMN_CATEGORY_QU,c3);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"10-4");
+            cv.put(COLUMN_RIGHT_LETTER,"6");
+            cv.put(COLUMN_WRONG_LETTER,"7");
+            cv.put(COLUMN_IMAGE_NAME,"a4");
+            cv.put(COLUMN_CATEGORY_QU,c3);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"5+7");
+            cv.put(COLUMN_RIGHT_LETTER,"12");
+            cv.put(COLUMN_WRONG_LETTER,"13");
+            cv.put(COLUMN_IMAGE_NAME,"a12");
+            cv.put(COLUMN_CATEGORY_QU,c3);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"10+2");
+            cv.put(COLUMN_RIGHT_LETTER,"12");
+            cv.put(COLUMN_WRONG_LETTER,"13");
+            cv.put(COLUMN_IMAGE_NAME,"a122");
+            cv.put(COLUMN_CATEGORY_QU,c3);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"7-2");
+            cv.put(COLUMN_RIGHT_LETTER,"5");
+            cv.put(COLUMN_WRONG_LETTER,"6");
+            cv.put(COLUMN_IMAGE_NAME,"a5");
+            cv.put(COLUMN_CATEGORY_QU,c3);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"9-4");
+            cv.put(COLUMN_RIGHT_LETTER,"5");
+            cv.put(COLUMN_WRONG_LETTER,"6");
+            cv.put(COLUMN_IMAGE_NAME,"a59");
+            cv.put(COLUMN_CATEGORY_QU,c3);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"3+4");
+            cv.put(COLUMN_RIGHT_LETTER,"7");
+            cv.put(COLUMN_WRONG_LETTER,"9");
+            cv.put(COLUMN_IMAGE_NAME,"a7");
+            cv.put(COLUMN_CATEGORY_QU,c3);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+            cv.clear();
+            cv.put(COLUMN_WORD,"6+2");
+            cv.put(COLUMN_RIGHT_LETTER,"8");
+            cv.put(COLUMN_WRONG_LETTER,"7");
+            cv.put(COLUMN_IMAGE_NAME,"a82");
+            cv.put(COLUMN_CATEGORY_QU,c3);
+            db.insert(QUESTION_TABLE_NAME,null,cv);
+
         }
 
         @Override
